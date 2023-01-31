@@ -25,7 +25,7 @@ from spark_class import RoseSpark
 
 class Invoice(BASE):
     '''we also want a col that is total duration that is a sum of duration...'''
-    __tablename__ = f"alexander_patrie_prek_invoice_for_{icd.THIS_WEEK}"
+    __tablename__ = f"stressFree_invoice_for_{icd.THIS_WEEK}"
     service_id = Column(Integer(), primary_key=True)
     service_date = Column(String())
     service_rendered = Column(String())
@@ -120,10 +120,8 @@ if __name__ == "__main__":
     conf = open_config(f"{project_dir}/config/config.json")
     rose = spark_start(conf)
     pencil = Pencil(BASE, ENGINE, new_invoice=True)
-    wk0_invoice = [[0, "10/03/2022", "Music Class - PREK", 30],
-                   [1, "10/03/2022", "Music Class - TODDLER", 30],
-                   [2, "10/06/2022", "Music Class - PREK", 30],
-                   [3, "10/06/2022", "Music Class - TODDLER", 30]]
+    wk0_invoice = [[0, "10/03/2022", "Home Estimate - PREGK", 30],
+                   [1, "10/03/2022", "Materials - GR", 50]]
     insert_invoice_batch(pencil=pencil, 
                          batch_info=wk0_invoice)
     write_new_invoice_file(pencil, wk0_invoice)
